@@ -1,0 +1,203 @@
+.frame{
+    background-color: #008659;
+    opacity: 0.1;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.body{
+    font-family: "Poppins", Helvetica;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    
+.form-bg{
+    background-color: var(--white);
+    height: 1vh;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 0px;
+    width: 1310px;
+    display: flex;
+    left: 275px;
+}
+
+    /* green box */
+  .green-box{
+    background-color: #008659;
+    height: 100px;
+    width: 1500px;
+  }
+  
+  /* good receiving form text*/
+  .grcn-text{
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    left: 75px;
+    letter-spacing: 0;
+    line-height: 24px;
+    position: absolute;
+    top: 15px;
+    white-space: nowrap;
+    width: 383px;
+  }
+  
+  /* menu icon */
+  .mingcute-menu-fill{
+    height: 36px;
+    left: 20px;
+    position: absolute;
+    top: 10px;
+    width: 36px;
+    display: flex;
+  }
+  
+  /* label */
+  .label{
+    color: #666666;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    left: 0px;
+    top: 50px;
+    gap: 20px;
+  }
+
+  /* data input */
+  .input-box{
+    align-items: flex-start;
+    align-self: stretch;
+    border: 1px solid;
+    border-color: var(--celeste);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 400px;
+    height: auto;
+    margin-bottom: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+    mix-blend-mode: normal;
+  }
+  
+  .container {
+    display: grid;
+    margin-top: 100px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;  
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 500px;
+    /* Adjust as per your spacing requirements */
+  }
+
+  .parent-container {
+    display: flex;
+    justify-content: center;
+    /* Add any necessary styling for the parent container */
+  }
+
+  .input-text{
+    color: #666666;
+    font-size: 16px;
+    font-weight: 400;
+    top: 0;
+    left: 0;
+    position: absolute;
+    white-space: nowrap;
+    border: none;
+    width: 500px;
+  }
+  
+  /* table heading */
+  .th{
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    gap: 10px;
+    height: 60px;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    width: 137px;
+  }
+  
+  .th-text{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .td{
+    align-items: center;
+    background-color: black;
+    opacity: 0.1;
+    display: flex;
+    gap: 10px;
+    height: 103px;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    width: 137px;
+  }
+  
+  .td-text{
+    color: #000000b2;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .button-with-outline{
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #008659;
+    width: 174px;
+  }
+  
+  .button-with-outline-text{
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-top: -1px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: 140px;
+    color: #008659;
+  }
+  
+  .button-solid-color{
+    background-color: #008659;
+    border: 1px solid;
+    width: 174px;
+    color: #ffffff;
+  }
+
+  .text-primary {
+    color: #0CDA90 !important;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #0CDA90;
+    border-color: #0CDA90;
+  }
+  .btn-primary {
+    box-shadow: 0 3px 2px rgb(12 218 144 / 20%);
+  }
