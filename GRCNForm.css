@@ -101,7 +101,6 @@
 
   .parent-container {
     display: flex;
-    justify-content: center;
     /* Add any necessary styling for the parent container */
   }
 
