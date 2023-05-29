@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import "./GRCNForm.css";
 import axios from 'axios';
 import Modal from 'react-modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import TableRows from './TableRows';
 import AddDeleteTableRows from './AddDeleteTableRows';
 
 const GRCNForm= () => {
@@ -21,6 +18,7 @@ const GRCNForm= () => {
     const [ExpiryDate, setExpiryDate] = useState('');
     const [BatchNo, setBatchNo] = useState('');
     const [PartNo, setPartNo] = useState('');
+    const [OrderedQty, setOrderedQty] = useState('');
     const [ReceivedQty, setReceivedQty] = useState('');
     const [Location, setLocation] = useState('');
     const [ItemUnit, setItemUnit] = useState('');
@@ -42,6 +40,7 @@ const GRCNForm= () => {
       console.log('Expiry Date:', ExpiryDate);
       console.log('Batch No:', BatchNo);
       console.log('Part No:', PartNo);
+      console.log('Ordered Qty:', OrderedQty);
       console.log('Received Qty:', ReceivedQty);
       console.log('Location:', Location);
       console.log('Item Unit:', ItemUnit);
@@ -59,6 +58,7 @@ const GRCNForm= () => {
         "batchNo":BatchNo,
         "partNo":PartNo,
         "receivedQty":ReceivedQty,
+        "orderedQty":OrderedQty,
         "location":Location,
         "itemUnit":ItemUnit,
         "expiryDate":ExpiryDate,
