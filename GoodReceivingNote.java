@@ -14,22 +14,25 @@ public class GoodReceivingNote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int grcnId;
     private int poNo;
-    private int supplierId;
     private String supplierName;
     private Date receivedDate;
     private int itemId;
     private String itemName;
     private String category;
-    private String expiryDate;
+    private Date expiryDate;
     private int batchNo;
     private int partNo;
+    private int orderedQty;
     private int receivedQty;
-    private String location;
+    private int location;
     private String itemUnit;
     private String status;
     private String remark;
 
     //constructor
+
+    public GoodReceivingNote() {
+    }
 
     //getter and setters
     public int getGrcnId() {
@@ -46,14 +49,6 @@ public class GoodReceivingNote {
 
     public void setPoNo(int poNo) {
         this.poNo = poNo;
-    }
-
-    public int getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
     }
 
     public String getSupplierName() {
@@ -73,8 +68,7 @@ public class GoodReceivingNote {
     }
 
     public int getItemId() {
-        return itemId;
-    }
+        return itemId;    }
 
     public void setItemId(int itemId) {
         this.itemId = itemId;
@@ -96,11 +90,11 @@ public class GoodReceivingNote {
         this.category = category;
     }
 
-    public String getExpiryDate() {
+    public Date getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(String expiryDate) {
+    public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
     }
 
@@ -120,6 +114,14 @@ public class GoodReceivingNote {
         this.partNo = partNo;
     }
 
+    public int getOrderedQty() {
+        return orderedQty;
+    }
+
+    public void setOrderedQty(int orderedQty) {
+        this.orderedQty = orderedQty;
+    }
+
     public int getReceivedQty() {
         return receivedQty;
     }
@@ -128,11 +130,11 @@ public class GoodReceivingNote {
         this.receivedQty = receivedQty;
     }
 
-    public String getLocation() {
+    public int getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(int location) {
         this.location = location;
     }
 
