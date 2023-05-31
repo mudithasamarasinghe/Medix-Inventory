@@ -12,13 +12,12 @@ const Table = () => {
       expiryDate: '',
       receivedDate: '',
       batchNo: '',
-      partNo: '',
       orderedQty: '',
       receivedQty: '',
       location: '',
       itemUnit: '',
       status: '',
-      remark: ''
+      remark: '',
     }
   ]);
   
@@ -26,20 +25,19 @@ const Table = () => {
   // Function to add a new row
   const addRow = () => {
     const newRow = {
-      id: Date.now(), // Generate a unique ID for each row
+      id: rows.length + 1, // Generate a unique ID for each row
       itemId: '',
       itemName: '',
       category: '',
       expiryDate: '',
       receivedDate: '',
       batchNo: '',
-      partNo: '',
       orderedQty: '',
       receivedQty: '',
       location: '',
       itemUnit: '',
       status: '',
-      remark: ''
+      remark: '',
     };              
     setRows([...rows, newRow]);
   };
@@ -103,8 +101,6 @@ const handleInputChange = (id, field, value) => {
     sanitizedValue = sanitizedValue.replace(/[^a-zA-Z ]/g, ''); // Sanitize input to allow only alphabets and spaces
   } else if (field === 'batchNo') {
     sanitizedValue = sanitizedValue.replace(/[^0-9]/g, '');
-  } else if (field === 'partNo') {
-    sanitizedValue = sanitizedValue.replace(/[^0-9]/g, ''); // Sanitize input to allow only alphabets and spaces
   } else if (field === 'orderedQty') {
     sanitizedValue = sanitizedValue.replace(/[^0-9]/g, ''); 
   } else if (field === 'receivedQty') {
@@ -121,7 +117,7 @@ const handleInputChange = (id, field, value) => {
     }
     return row;
   });
-
+  
   setRows(updatedRows);
 };
 
@@ -136,7 +132,6 @@ const handleInputChange = (id, field, value) => {
             <th>expiryDate</th>
             <th>receivedDate</th>
             <th>batchNo</th>
-            <th>partNo</th>
             <th>orderedQty</th>
             <th>receivedQty</th>
             <th>location</th>
@@ -152,7 +147,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.itemId}
-                  name='itemId'
+                  name={`itemId_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'itemId', e.target.value)}
                 />
               </td>
@@ -160,12 +155,12 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.itemName}
-                  name='itemName'
+                  name={`itemName_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'itemName', e.target.value)}
                 />
               </td>
               <td>
-              <select value={category} onChange={handleCategoryChange}>
+              <select value={category} onChange={handleCategoryChange}  name={`category_${row.id}`}> 
               <option value="" disabled hidden>
                 Select a category
               </option>
@@ -180,7 +175,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="date"
                   value={row.expiryDate}
-                  name='expiryDate'
+                  name={`expiryDate_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'expiryDate', e.target.value)}
                 />
               </td>
@@ -188,7 +183,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="date"
                   value={row.receivedDate}
-                  name='receivedDate'
+                  name={`receivedDate_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'receivedDate', e.target.value)}
                 />
               </td>
@@ -196,23 +191,15 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.batchNo}
-                  name='batchNo'
+                  name={`batchNo_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'batchNo', e.target.value)}
                 />
               </td>
               <td>
                 <input
                   type="text"
-                  value={row.partNo}
-                  name='partNo'
-                  onChange={(e) => handleInputChange(row.id, 'partNo', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
                   value={row.orderedQty}
-                  name='orderedQty'
+                  name={`orderedQty_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'orderedQty', e.target.value)}
                 />
               </td>
@@ -220,7 +207,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.receivedQty}
-                  name='receivedQty'
+                  name={`receivedQty_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'receivedQty', e.target.value)}
                 />
               </td>
@@ -228,7 +215,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.location}
-                  name='location'
+                  name={`location_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'location', e.target.value)}
                 />
               </td>
@@ -236,12 +223,12 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.itemUnit}
-                  name='itemUnit'
+                  name={`itemUnit_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'itemUnit', e.target.value)}
                 />
               </td>
               <td>
-              <select value={status} onChange={handleStatusChange}>
+              <select value={status} onChange={handleStatusChange} name={`status_${row.id}`}>
               <option value="" disabled hidden>
                 Select the status
               </option>
@@ -256,7 +243,7 @@ const handleInputChange = (id, field, value) => {
                 <input
                   type="text"
                   value={row.remark}
-                  name='remark'
+                  name={`remark_${row.id}`}
                   onChange={(e) => handleInputChange(row.id, 'remark', e.target.value)}
                 />
               </td>
@@ -275,5 +262,6 @@ const handleInputChange = (id, field, value) => {
     </div>
   );
 };
+
 
 export default Table;
