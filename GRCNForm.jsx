@@ -3,17 +3,28 @@ import "./GRCNForm.css";
 import axios from 'axios';
 import Modal from 'react-modal';
 import AddDeleteTableRows from './AddDeleteTableRows';
+import './Reusable_components/Overall.css';
 
 const GRCNForm= () => {
-        
+
     // Master Data
     const [GRCNId, setGRCNId] = useState('');
-    const [PONo, setPONo] = useState('');
-    const [SupplierName, setSupplierName] = useState('');
+    const [poNo, setPONo] = useState('');
+    const [supplierName, setSupplierName] = useState('');
 
     // Detail Data
-    const [Category, setCategory] = useState('');
-    const [Status, setStatus] = useState('');
+    const [itemId, setItemId] = useState('');
+    const [itemName, setItemName] = useState('');
+    const [category, setCategory] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [receivedDate, setReceivedDate] = useState('');
+    const [batchNo, setBatchNo] = useState('');
+    const [orderedQty, setOrderedQty] = useState('');
+    const [receivedQty, setReceivedQty] = useState('');
+    const [location, setLocation] = useState('');
+    const [itemUnit, setItemUnit] = useState('');
+    const [status, setStatus] = useState('');
+    const [remark, setRemark] = useState('');
     const [isRecordInserted_1, setRecordInserted] = useState(false);
 
     // Event handler for form submission
@@ -22,29 +33,38 @@ const GRCNForm= () => {
       console.log(e);
         // Master Data
       console.log('GRCN Id:', GRCNId);
-      console.log('PO No:', PONo);
-      console.log('Supplier Name:', SupplierName);
+      console.log('PO No:', poNo);
+      console.log('Supplier Name:', supplierName);
 
         // Detail Data
-      console.log('Item Id:', e.target[2].value);
-      console.log('Item Name:', e.target[3].value);
-        console.log('Category:', e.target[4].value);
-      console.log('Expiry Date:', e.target[5].value);
-        console.log('Received Date:', e.target[6].value);
-        console.log('Batch No:', e.target[7].value);
-        console.log('Order Quantity:', e.target[8].value);
-        console.log('Received Quantity:', e.target[9].value);
-        console.log('Location:', e.target[10].value);
-        console.log('Item Unit:', e.target[11].value);
-      console.log('Status:', e.target[12].value);
-        console.log('Remark:', e.target[13].value);
+        console.log('item Id:', e.target[2].value);
+        console.log('item Name:', e.target[3].value);
+        console.log('category:', e.target[4].value);
+        console.log('expiry Date:', e.target[5].value);
+        console.log('received Date:', e.target[6].value);
+        console.log('batch No:', e.target[7].value);
+        console.log('order Quantity:', e.target[8].value);
+        console.log('received Quantity:', e.target[9].value);
+        console.log('location:', e.target[10].value);
+        console.log('item Unit:', e.target[11].value);
+        console.log('status:', e.target[12].value);
+        console.log('remark:', e.target[13].value);
 
       const formData = {
-        "PONo":PONo,
-        "supplierName":SupplierName,
-        "category":Category,
-        "location":Location,
-        "status":Status,
+          "poNo":poNo,
+          "supplierName":supplierName,
+          "itemId":e.target[2].value,
+          "itemName":e.target[3].value,
+          "category":e.target[4].value,
+          "expiryDate":e.target[5].value,
+          "receivedDate":e.target[6].value,
+          "batchNo":e.target[7].value,
+          "orderedQty":e.target[8].value,
+          "receivedQty":e.target[9].value,
+          "location":e.target[10].value,
+          "itemUnit":e.target[11].value,
+          "status":e.target[12].value,
+          "remark":e.target[13].value,
     };
 
       axios.post('http://localhost:8090/goodReceivingNote/add', formData, {
@@ -61,7 +81,10 @@ const GRCNForm= () => {
         .catch((error) => {
           console.error(error);
           // Handle form submission error
+           // alert(error.message);
+            console.log(error.toJSON());
         });
+
     };
 
               {/* Available category options */}
@@ -71,7 +94,7 @@ const GRCNForm= () => {
                 'Medical Equipment',
                 'Laboratory Consumables'
               ];
-    
+
               {/* Event handler for category selection */}
               const handleCategoryChange = (e) => {
                 setCategory(e.target.value);
@@ -89,17 +112,17 @@ const GRCNForm= () => {
 
                 const MyComponent = () => {
                   const [isOpen, setIsOpen] = useState(false);
-                
+
                   const handleOpenModal = () => {
                     setIsOpen(true);
                   };
-                
+
                   const handleCloseModal = () => {
                     setIsOpen(false);
                   };
                 }
 
-                
+
     return (
         <div className="maincontainer">
       <div class="container py-5">
@@ -123,8 +146,7 @@ const GRCNForm= () => {
                       <div class="form-group col-lg-6">
                         <label class="font-weight-bold text-small" for="PO No:">PO No:<span class="text-primary ml-1">*</span></label>
                         <input class="form-control" type="text"
-                            pattern="[0-9]+"
-                            value={PONo}
+                            value={poNo}
                             name='poNo'
                             onChange={(e) => {
                             const input = e.target.value;
@@ -138,7 +160,7 @@ const GRCNForm= () => {
                       <div class="form-group col-lg-6">
                         <label class="font-weight-bold text-small" for="Supplier Name:">Supplier Name:<span class="text-primary ml-1">*</span></label>
                         <input class="form-control" type="text"
-                            value={SupplierName}
+                            value={supplierName}
                             name='supplierName'
                             onChange={(e) => {
                             const input = e.target.value;
@@ -167,5 +189,5 @@ const GRCNForm= () => {
       </div>
     );
   }
-  
+
   export default GRCNForm;
