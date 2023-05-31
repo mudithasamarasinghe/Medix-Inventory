@@ -6,64 +6,45 @@ import AddDeleteTableRows from './AddDeleteTableRows';
 
 const GRCNForm= () => {
         
-    // Define state variables for form inputs
+    // Master Data
     const [GRCNId, setGRCNId] = useState('');
     const [PONo, setPONo] = useState('');
-    const [ReceivedDate, setReceivedDate] = useState('');
-    const [SupplierId, setSupplierId] = useState('');
     const [SupplierName, setSupplierName] = useState('');
-    const [ItemId, setItemId] = useState('');
-    const [ItemName, setItemName] = useState('');
+
+    // Detail Data
     const [Category, setCategory] = useState('');
-    const [ExpiryDate, setExpiryDate] = useState('');
-    const [BatchNo, setBatchNo] = useState('');
-    const [PartNo, setPartNo] = useState('');
-    const [OrderedQty, setOrderedQty] = useState('');
-    const [ReceivedQty, setReceivedQty] = useState('');
-    const [Location, setLocation] = useState('');
-    const [ItemUnit, setItemUnit] = useState('');
     const [Status, setStatus] = useState('');
-    const [Remark, setRemark] = useState('');
-    const [isRecordInserted, setRecordInserted] = useState(false);
-  
+    const [isRecordInserted_1, setRecordInserted] = useState(false);
+
     // Event handler for form submission
     const handleSubmit = (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
+      console.log(e);
+        // Master Data
       console.log('GRCN Id:', GRCNId);
       console.log('PO No:', PONo);
-      console.log('Received_Date:', ReceivedDate);
-      console.log('Supplier Id:', SupplierId);
       console.log('Supplier Name:', SupplierName);
-      console.log('Item Id:', ItemId);
-      console.log('Item Name:', ItemName);
-      console.log('Category:', Category);
-      console.log('Expiry Date:', ExpiryDate);
-      console.log('Batch No:', BatchNo);
-      console.log('Part No:', PartNo);
-      console.log('Ordered Qty:', OrderedQty);
-      console.log('Received Qty:', ReceivedQty);
-      console.log('Location:', Location);
-      console.log('Item Unit:', ItemUnit);
-      console.log('Status:', Status);
-      console.log('Remark:', Remark);
+
+        // Detail Data
+      console.log('Item Id:', e.target[2].value);
+      console.log('Item Name:', e.target[3].value);
+        console.log('Category:', e.target[4].value);
+      console.log('Expiry Date:', e.target[5].value);
+        console.log('Received Date:', e.target[6].value);
+        console.log('Batch No:', e.target[7].value);
+        console.log('Order Quantity:', e.target[8].value);
+        console.log('Received Quantity:', e.target[9].value);
+        console.log('Location:', e.target[10].value);
+        console.log('Item Unit:', e.target[11].value);
+      console.log('Status:', e.target[12].value);
+        console.log('Remark:', e.target[13].value);
 
       const formData = {
         "PONo":PONo,
-        "supplierId":SupplierId,
         "supplierName":SupplierName,
-        "receivedDate":ReceivedDate,
-        "itemId":ItemId,
-        "itemName":ItemName,
         "category":Category,
-        "batchNo":BatchNo,
-        "partNo":PartNo,
-        "receivedQty":ReceivedQty,
-        "orderedQty":OrderedQty,
         "location":Location,
-        "itemUnit":ItemUnit,
-        "expiryDate":ExpiryDate,
         "status":Status,
-        "remark":Remark,
     };
 
       axios.post('http://localhost:8090/goodReceivingNote/add', formData, {
@@ -118,6 +99,7 @@ const GRCNForm= () => {
                   };
                 }
 
+                
     return (
         <div className="maincontainer">
       <div class="container py-5">
@@ -172,9 +154,9 @@ const GRCNForm= () => {
                       </div>
                       </div>
                       <div>
-                        <button type="submit" className='button-solid-color'><div className='button-solid:hover'>
+                        <button type="submit" className='button-solid-color' ><div className='button-solid:hover'>
                         Record</div></button>
-                        <button type="clear" className='button-with-outline'><div className='button-with-outline:hover'>
+                        <button type="clear" className='button-with-outline' ><div className='button-with-outline:hover'>
                         Clear</div></button>
                         </div>
                     </form>
